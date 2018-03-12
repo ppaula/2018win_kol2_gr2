@@ -21,3 +21,34 @@
 #
 #Your program must be runnable with command "python task.py".
 #Show some usecases of your library in the code (print some things)
+
+from Student import Student
+from Score import Score
+from SchoolClass import SchoolClass
+from GradeAndAttendanceHolder import GradeAndAttendanceHolder
+
+stud1 = Student("Jan", "Nowak", 1);
+stud2 = Student("Ola", "Nowakowska", 2);
+
+school_class1 = SchoolClass("Maths", 1);
+school_class1 = SchoolClass("English", 2);
+
+holder1 = GradeAndAttendanceHolder(1, 1)
+holder2 = GradeAndAttendanceHolder(1, 2)
+holder3 = GradeAndAttendanceHolder(2, 1)
+holder4 = GradeAndAttendanceHolder(2, 2)
+
+holder1.set_grade(2)
+holder1.set_grade(5)
+holder2.set_grade(3)
+holder2.set_grade(4)
+
+holder1.set_attendance(True)
+holder1.set_attendance(True)
+holder3.set_attendance(True)
+holder4.set_attendance(False)
+
+
+print("Average of", stud1.name, stud1.surname, "in", school_class1.name, "is", holder1.get_average_score_in_class())
+print("Attendance:")
+holder1.get_attendance()
