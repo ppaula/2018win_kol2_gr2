@@ -1,0 +1,57 @@
+[
+    {
+        "name" : "Math",
+        "student_ident" : 1,
+        "attendance" : [0, 1, 1, 0, 1 ],
+        "score" : [3, 4 ]
+    },
+
+    {
+        "name" : "Math",
+        "student_ident" : 2,
+        "attendance" : [1, 1, 1, 1, 1 ],
+        "score" : [5, 5 ]
+    },
+
+    {
+        "name" : "Math",
+        "student_ident" : 3,
+        "attendance" : [1, 1, 0, 1, 1 ],
+        "score" : [5, 2 ]
+    },
+
+    {
+        "name" : "Math",
+        "student_ident" : 4,
+        "attendance" : [0, 0, 0, 0, 1 ],
+        "score" : [2, 2 ]
+    },
+
+    {
+        "name" : "PITE",
+        "student_ident" : 1,
+        "attendance" : [1, 0, 1, 1, 1, 1],
+        "score" : [4.5, 5 ]
+    },
+
+    {
+        "name" : "PITE",
+        "student_ident" : 2,
+        "attendance" : [0, 0, 1, 0, 1, 1],
+        "score" : [3, 4 ]
+    },
+
+    {
+        "name" : "PITE",
+        "student_ident" : 3,
+        "attendance" : [1, 0, 1, 0, 1, 1],
+        "score" : [3.5, 4.5 ]
+    },
+
+    {
+        "name" : "PITE",
+        "student_ident" : 4,
+        "attendance" : [1, 1, 1, 0, 0, 0],
+        "score" : [2, 3.5 ]
+    }
+]

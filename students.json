@@ -1,0 +1,25 @@
+[
+    {
+        "ident" : 1,
+        "name" : "Adam",
+        "surname" : "Nowak"
+    },
+
+    {
+        "ident" : 2,
+        "name" : "Bartosz",
+        "surname" : "Kowalski"
+    },
+
+    {
+        "ident" : 3,
+        "name" : "Michal",
+        "surname" : "Pietrucha"
+    },
+
+    {
+        "ident" : 4,
+        "name" : "Dominika",
+        "surname" : "Marchewa"
+    }
+]
