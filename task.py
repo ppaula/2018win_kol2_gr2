@@ -22,33 +22,73 @@
 #Your program must be runnable with command "python task.py".
 #Show some usecases of your library in the code (print some things)
 
-from Student import Student
-from Score import Score
-from SchoolClass import SchoolClass
-from GradeAndAttendanceHolder import GradeAndAttendanceHolder
-
-stud1 = Student("Jan", "Nowak", 1);
-stud2 = Student("Ola", "Nowakowska", 2);
-
-school_class1 = SchoolClass("Maths", 1);
-school_class1 = SchoolClass("English", 2);
-
-holder1 = GradeAndAttendanceHolder(1, 1)
-holder2 = GradeAndAttendanceHolder(1, 2)
-holder3 = GradeAndAttendanceHolder(2, 1)
-holder4 = GradeAndAttendanceHolder(2, 2)
-
-holder1.set_grade(2)
-holder1.set_grade(5)
-holder2.set_grade(3)
-holder2.set_grade(4)
-
-holder1.set_attendance(True)
-holder1.set_attendance(True)
-holder3.set_attendance(True)
-holder4.set_attendance(False)
 
 
-print("Average of", stud1.name, stud1.surname, "in", school_class1.name, "is", holder1.get_average_score_in_class())
-print("Attendance:")
-holder1.get_attendance()
+import json
+import numpy as np
+
+
+def open_json_file(json_filename):
+    json_file = open(json_filename, encoding='utf-8').read()
+    json_data = json.loads(json_file)
+    return json_data
+
+def find_student_name_and_surname(students, ident):
+    student_name_and_surname = "name surname"
+    for student in students:
+        if student['ident'] == ident:
+            student_name_and_surname = student['name'] + " " + student['surname']
+    return student_name_and_surname
+
+def count_student_average_score(school_classes, ident):
+    average_scores = []
+    for school_class in school_classes:
+        if school_class['student_ident'] == ident:
+            average_scores.append(np.average(school_class['score']))
+    average_score = np.average(average_scores)
+    return average_score
+
+
+if __name__ == "__main__":
+
+    students = open_json_file("students.json")
+    school_classes = open_json_file("classes.json")
+
+    print("All students")
+    for student in students:
+        print("\t", student['name'], student['surname'])
+
+    print()
+
+    print("All school classes")
+    class_names = set()
+    for school_class in school_classes:
+        class_names.add(school_class['name'])
+    for class_name in class_names:
+        print("\t", class_name)
+
+    print()
+
+    print("Attendance")
+    for school_class in school_classes:
+        student_name_and_surname = find_student_name_and_surname(students, school_class['student_ident'])
+        attendance = np.average(school_class['attendance']) * 100.0
+        print("\t", school_class['name'], ": " , student_name_and_surname, " with ", "%.2f"% attendance, "% attendance",sep="")
+
+    print()
+
+    print("Students average score in every class")
+    for school_class in school_classes:
+        student_name_and_surname = find_student_name_and_surname(students, school_class['student_ident'])
+        score = np.average(school_class['score'])
+        print("\t", school_class['name'], ": " , student_name_and_surname, " with average score ", "%.1f"% score,sep="")
+
+    print()
+
+    print("Students average score across classes")
+    conclusion = "PASSED"
+    for student in students:
+        score = count_student_average_score(school_classes, student['ident'])
+        if score < 3.0:
+            conclusion = "FAILED"
+        print("\t", student['name'] , student['surname'], "with average score across classes", "%.2f"% score, conclusion)
